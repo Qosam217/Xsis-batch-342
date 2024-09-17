@@ -3,10 +3,13 @@ public class Front3 {
         System.err.println(front3("abcXYZ"));
     }
     public static String front3(String str) {
+        String str1;
         if(str.length() < 3){
-          return str.substring(0, str.length()) + str.substring(0, str.length()) + str.substring(0, str.length()) ;
+            str1 = str.substring(0, str.length());
+            return str1.repeat(3);
         }else{
-          return str.substring(0,3) + str.substring(0,3) + str.substring(0,3);
+            str1 = str.substring(0,3);
+            return str1.repeat(3);
         }
       }
 }
