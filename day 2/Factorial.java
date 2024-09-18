@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Factorial {
     public static void main(String[] args) {
         Scanner inputScanner = new Scanner(System.in);
+        System.out.print("Faktorial dari = ");
         int num1 = inputScanner.nextInt();
         inputScanner.close();
         System.out.println(factorial(num1));

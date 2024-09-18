@@ -8,6 +8,7 @@ public class Fibonacci {
 
     public static void fibonacci(){
         Scanner inputScanner = new Scanner(System.in);
+        System.out.print("Jumlah baris fibonacci = ");
         int n = inputScanner.nextInt();
         inputScanner.close();
         if(n >= 0){
