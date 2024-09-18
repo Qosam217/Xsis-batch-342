@@ -2,7 +2,7 @@ public class MaxMin {
     public static void main(String[] args) {
         int[] cal = maxMin(5, -9, 10000, 0);
         System.out.println("Nilai maksimal " + cal[0]);
-        System.out.println("Nilai minimal " + cal[0]);
+        System.out.println("Nilai minimal " + cal[1]);
     }
     public static int[] maxMin(int a, int b, int c, int d){
         int[] result = new int[2];
