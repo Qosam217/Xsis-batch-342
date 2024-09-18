@@ -20,8 +20,6 @@ public class GenByYear {
         }else if (year < 2039){
             gen = "Gen Beta";
         }
-        return gen;
-        
-        
+        return gen; 
     }
 }

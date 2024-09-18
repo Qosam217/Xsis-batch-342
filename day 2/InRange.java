@@ -9,11 +9,8 @@ public class InRange {
         if(n1 >= 30 && n1 <= 50){
             if(n2 >= 30 && n2 <= 50){
                 return true;
-            }else{
-                return false;
             }
-        }else{
-            return false;
         }
+        return false;
     }
 }
