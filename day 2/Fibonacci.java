@@ -11,10 +11,10 @@ public class Fibonacci {
         int n = inputScanner.nextInt();
         inputScanner.close();
         if(n >= 0){
-            System.out.print(0);
+            System.out.print(0 + " ");
         }
         if(n >= 1){
-            System.out.print(1);
+            System.out.print(1 + " ");
         }
         if(n > 2){
             int num1 = 0;
@@ -22,7 +22,7 @@ public class Fibonacci {
             int num3;
             for (int i = 2; i < n; i++){
                 num3 = num1 + num2;
-                System.out.print(num3);
+                System.out.print(num3 + " ");
                 num1 = num2;
                 num2 = num3;
             }    
