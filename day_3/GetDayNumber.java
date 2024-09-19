@@ -15,7 +15,7 @@ public class GetDayNumber {
     }
     public static String dayName(int num){
         String result = "ERROR";
-        switch(num % 7){
+        switch(num){
             case 1:
                 result = "Senin";
                 break;
@@ -34,7 +34,7 @@ public class GetDayNumber {
             case 6:
                 result = "Sabtu";
                 break;
-            case 0:
+            case 7:
                 result = "Minggu";
                 break;
         }
@@ -80,11 +80,11 @@ public class GetDayNumber {
         if(numDay == 0){
             System.out.println("INVALID DAY");
         }else{
-            System.out.println("Kemarin lusa adalah hari " + dayName(numDay - 2 +7));
-            System.out.println("Kemarin adalah hari " + dayName(numDay-1 +7));
+            System.out.println("Kemarin lusa adalah hari " + dayName((numDay - 2 <= 0)? numDay+5 : numDay-2));
+            System.out.println("Kemarin adalah hari " + dayName((numDay - 1 <= 0)? numDay+6 : numDay-1));
             System.out.println("Hari ini adalah hari " + dayName(numDay));
-            System.out.println("Besok adalah hari " + dayName(numDay + 1));
-            System.out.println("Besok lusa adalah hari " + dayName(numDay + 2));
+            System.out.println("Besok adalah hari " + dayName((numDay + 1 >= 7)? numDay - 6 : numDay + 1));
+            System.out.println("Besok lusa adalah hari " + dayName((numDay + 2 >= 7)? numDay - 5 : numDay + 2));
         }
     }
 }
