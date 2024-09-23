@@ -63,7 +63,7 @@ public class Statistic {
         return result;
     }
 
-    public static Integer getModus(int[] data){
+    public static int getModus(int[] data){
         boolean check = false;
         int modus = data[0];
         int num = 1;
@@ -76,17 +76,11 @@ public class Statistic {
                     modus = data[i-1];
                     num = temp;
                     check = false;
-                }else if(num == temp){
-                    check = true;
                 }
                 temp = 1;
             }
         }
-        if(check == true){
-            return null;
-        }else{
-            return modus;
-        }
+        return modus;
     }
 
     public static int getMax(int[] data){
