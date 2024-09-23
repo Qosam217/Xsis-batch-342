@@ -44,8 +44,8 @@ public class Statistic {
         return result;
     }
 
-    public static int getMedian(int[] data){
-        int result;
+    public static float getMedian(int[] data){
+        float result;
         if(data.length % 2 == 0){
             result = (data[data.length/2] + data[(data.length/2)-1])/2;
         }else{
@@ -63,7 +63,8 @@ public class Statistic {
         return result;
     }
 
-    public static int getModus(int[] data){
+    public static Integer getModus(int[] data){
+        boolean check = false;
         int modus = data[0];
         int num = 1;
         int temp = 1;
@@ -74,11 +75,18 @@ public class Statistic {
                 if(num < temp){
                     modus = data[i-1];
                     num = temp;
-                temp = 0;
+                    check = false;
+                }else if(num == temp){
+                    check = true;
                 }
+                temp = 1;
             }
         }
-        return modus;
+        if(check == true){
+            return null;
+        }else{
+            return modus;
+        }
     }
 
     public static int getMax(int[] data){
