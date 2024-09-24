@@ -9,9 +9,9 @@ public class StrukMakan {
         Scanner InputScanner = new Scanner(System.in);
         System.out.println("Daftar pesan tempat :");
         System.out.println("(kategori) = (jumlah) orang");
-        System.out.println("(Ketik Done jika selesai)\n");
+        System.out.println("Kategori : Laki-laki Dewasa, Perempuan Dewasa, Remaja, Anak-anak, dan Balita");
+        System.out.println("Ketik Done jika selesai\n");
         
-        int i = 0;
         ArrayList<String> data = new ArrayList<String>();
         while (true) { 
             String sum = InputScanner.nextLine().toLowerCase();
@@ -19,9 +19,8 @@ public class StrukMakan {
             sum.contains("perempuan dewasa") ||
             sum.contains("remaja") ||
             sum.contains("anak-anak") ||
-            sum.contains("balita")){
+            sum.contains("balita") && sum.contains("=")){
                 data.add(sum);
-                i += 1;
             }else if(sum.equals("done")){
                 break;
             }else{
