@@ -27,51 +27,51 @@ public class Converse {
         float result = 0;
         if(required.toLowerCase().equals("botol")){
             for(String n: data.keySet()){
-                if(n == "Botol"){
+                if(n.equals("Botol")){
                     result += data.get(n);
-                }else if(n == "Gelas"){
+                }else if(n.equals("Gelas")){
                     result += data.get(n) * 0.5;
-                }else if(n =="Teko"){
+                }else if(n.equals("Teko")){
                     result += data.get(n) * 5;
-                }else if(n == "Cangkir"){
+                }else if(n.equals("Cangkir")){
                     result += data.get(n) * 0.2;
                 }
             }
         }else if(required.toLowerCase().equals("gelas")){
             for(String n: data.keySet()){
-                if(n == "Botol"){
+                if(n.equals("Botol")){
                     result += data.get(n) * 2;
-                }else if(n == "Gelas"){
+                }else if(n.equals("Gelas")){
                     result += data.get(n);
-                }else if(n =="Teko"){
+                }else if(n.equals("Teko")){
                     result += data.get(n) * 25;
-                }else if(n == "Cangkir"){
+                }else if(n.equals("Cangkir")){
                     result += data.get(n) * 2.5;
                 }
             }
 
         }else if(required.toLowerCase().equals("teko")){
             for(String n: data.keySet()){
-                if(n == "Botol"){
+                if(n.equals("Botol")){
                     result += data.get(n) * 0.2;
-                }else if(n == "Gelas"){
+                }else if(n.equals("Gelas")){
                     result += data.get(n) * 0.1;
-                }else if(n =="Teko"){
+                }else if(n.equals("Teko")){
                     result += data.get(n) ;
-                }else if(n == "Cangkir"){
+                }else if(n.equals("Cangkir")){
                     result += data.get(n) * 0.04;
                 }
             }
             
         }else if(required.toLowerCase().equals("cangkir")){
             for(String n: data.keySet()){
-                if(n == "Botol"){
+                if(n.equals("Botol")){
                     result += data.get(n) * 5;
-                }else if(n == "Gelas"){
+                }else if(n.equals("Gelas")){
                     result += data.get(n) * 2.5;
-                }else if(n =="Teko"){
+                }else if(n.equals("Teko")){
                     result += data.get(n) * 25;
-                }else if(n == "Cangkir"){
+                }else if(n.equals("Cangkir")){
                     result += data.get(n) ;
                 }
             }

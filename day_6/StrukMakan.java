@@ -19,7 +19,7 @@ public class StrukMakan {
             sum.contains("perempuan dewasa") ||
             sum.contains("remaja") ||
             sum.contains("anak-anak") ||
-            sum.contains("balita") && sum.contains("=")){
+            sum.contains("balita") && sum.contains(" = ")){
                 data.add(sum);
             }else if(sum.equals("done")){
                 break;
