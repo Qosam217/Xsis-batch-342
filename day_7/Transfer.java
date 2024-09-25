@@ -12,6 +12,7 @@ public class Transfer {
         dataPin.put(112131, (double) 375000000);
 
         Scanner InputScanner = new Scanner(System.in);
+        System.out.println("==============================");
         while (true) { 
             System.out.println("(ketik 0 untuk exit)");
             System.out.print("Masukkan PIN \t: ");
@@ -19,7 +20,9 @@ public class Transfer {
             if(dataPin.keySet().contains(inputPin)){
 
                 while (true) { 
-                    System.out.print("Pilih aktivitas : (1. Setor Uang) (2. Transfer) (3.Kembali)\n");
+                    System.out.println("==============================");
+                    System.out.println("Pilih aktivitas : (1. Setor Uang) (2. Transfer) (3.Kembali)");
+                    System.out.print("Aktivitas : ");
                     int choice = InputScanner.nextInt();
                     if(choice == 1) {
                         deposit(dataPin, inputPin, InputScanner);
@@ -65,7 +68,9 @@ public class Transfer {
         int bankCode;
 
         while (true) { 
-            System.out.print("Pilihan Transfer \t: (1. Antar Rekening) (2. Antar Bank) (3. Kembali)\n");
+            System.out.println("==============================");
+            System.out.println("Pilihan Transfer \t: (1. Antar Rekening) (2. Antar Bank) (3. Kembali)");
+            System.out.print("Transfer : ");
             int transferChoice = transferScanner.nextInt();
             if(transferChoice == 1){
                 System.out.print("Masukkan rekening tujuan \t:");
