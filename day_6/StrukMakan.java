@@ -15,11 +15,11 @@ public class StrukMakan {
         ArrayList<String> data = new ArrayList<String>();
         while (true) { 
             String sum = InputScanner.nextLine().toLowerCase();
-            if(sum.contains("laki-laki dewasa") ||
-            sum.contains("perempuan dewasa") ||
-            sum.contains("remaja") ||
-            sum.contains("anak-anak") ||
-            sum.contains("balita") && sum.contains(" = ")){
+            if(sum.contains("laki-laki dewasa = ") ||
+            sum.contains("perempuan dewasa = ") ||
+            sum.contains("remaja = ") ||
+            sum.contains("anak-anak = ") ||
+            sum.contains("balita = ") && sum.contains(" = ")){
                 data.add(sum);
             }else if(sum.equals("done")){
                 break;
