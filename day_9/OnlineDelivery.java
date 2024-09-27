@@ -29,10 +29,14 @@ public class OnlineDelivery {
         for (int i = 0; i < delivery; i++) {
             date += 1;
             day += 1;
-            if(nationalHolidays.contains(date)){
+            if(nationalHolidays.contains(date) && date < 31){
                 delivery += 1;
-            }else if(day % 7 == 0 || day % 6 == 0){
+            }else if(day % 7 == 0){
+                day = 0;
                 delivery += 1;
+            }else if(day % 6 == 0){
+                delivery += 1;
+
             }
         }
 
