@@ -25,7 +25,8 @@ public class TestShape {
                 break;
             }else if(type >= 1 && type <= 6){
                 shape.setTypeShape(type);
-
+                System.out.println("\n" + sep.repeat(75));
+                System.out.println(shape.getTypeShape());
                 switch (type) {
                     case 1 :
                         System.out.print("Sisi = ");
