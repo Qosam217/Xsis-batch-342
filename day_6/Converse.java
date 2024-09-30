@@ -19,7 +19,7 @@ public class Converse {
         InputScanner.nextLine();
         System.out.println("Konversi ke :");
         String req = InputScanner.nextLine();
-
+        InputScanner.close();
         System.out.println("\nHasil konversi ke " + req +" = "+ doConverse(data, req));
 
     }

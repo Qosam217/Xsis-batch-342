@@ -39,7 +39,7 @@ class CalShape implements Shape{
             case 5 -> keliling =  22 * 2 * radius / 7;
             case 6 -> keliling =  (horizontal + diagonal) * 2;
             default -> {
-                System.out.println("Set Type Shape");;
+                System.out.println("Set Type Shape");
             }
         }
         return keliling;
