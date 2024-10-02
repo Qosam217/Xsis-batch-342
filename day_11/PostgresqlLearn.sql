@@ -83,13 +83,15 @@ alter table dosen alter column nama_dosen type varchar(200);
 select * from mahasiswa where kode_mahasiswa = 'M001';
 
 -- 3. query data mahasiswa mengambil jurusan dengan status jurusan non aktif
-select * from mahasiswa as m left join jurusan as j 
+select m.kode_mahasiswa as "NIM", m.nama_mahasiswa as "Nama" from mahasiswa as m left join jurusan as j 
 on m.kode_jurusan = j.kode_jurusan where j.status_jurusan = 'Non Aktif';
 
 -- 4. query data mahasiswa dengan nilai diatas 80 (exclude) untuk ujian status aktif
-select distinct (nama_mahasiswa) from mahasiswa as m left join nilai as n 
-on m.kode_mahasiswa = n.kode_mahasiswa left join jurusan as j 
-on m.kode_jurusan  = j.kode_jurusan where n.nilai > 80 and status_jurusan = 'Aktif';
+select m.nama_mahasiswa, n.nilai, u.nama_ujian 
+from mahasiswa as m 
+left join nilai as n on m.kode_mahasiswa = n.kode_mahasiswa 
+left join ujian as u on n.kode_ujian = u.kode_ujian 
+where n.nilai > 80 and u.status_ujian = 'Aktif';
 
 -- 5. query data jurusan mengandung kata "sistem"
 select kode_jurusan, nama_jurusan, status_jurusan from jurusan 
@@ -108,6 +110,17 @@ join jurusan as j on j.kode_jurusan = m.kode_jurusan
 join dosen as d on d.kode_jurusan = m.kode_jurusan
 join type_dosen as t on d.kode_typedosen = t.kode_typedosen where m.kode_mahasiswa = 'M001';
 
+-- 8. query for view
+create view check_view as
+select kode_mahasiswa, nama_mahasiswa, nama_jurusan, 
+a.deskripsi as "Agama", nama_dosen, status_jurusan, t.deskripsi as "Deskripsi" 
+from mahasiswa as m join agama as a on a.kode_agama = m.kode_agama 
+join jurusan as j on j.kode_jurusan = m.kode_jurusan 
+join dosen as d on d.kode_jurusan = m.kode_jurusan
+join type_dosen as t on d.kode_typedosen = t.kode_typedosen where m.kode_mahasiswa = 'M001';
+
+select * from check_view;
+
 -- 9. query data mahasiswa beserta nilainya
-select m.nama_mahasiswa as "Nama Mahasiswa", n.nilai from mahasiswa as m
+select m.nama_mahasiswa as "Nama Mahasiswa", n.nilai from mahasiswa as m 
 left join nilai as n on m.kode_mahasiswa = n.kode_mahasiswa;
