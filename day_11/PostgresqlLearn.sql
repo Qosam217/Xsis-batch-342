@@ -83,14 +83,16 @@ alter table dosen alter column nama_dosen type varchar(200);
 select * from mahasiswa where kode_mahasiswa = 'M001';
 
 -- 3. query data mahasiswa mengambil jurusan dengan status jurusan non aktif
-select m.kode_mahasiswa as "NIM", m.nama_mahasiswa as "Nama" from mahasiswa as m left join jurusan as j 
-on m.kode_jurusan = j.kode_jurusan where j.status_jurusan = 'Non Aktif';
+select m.kode_mahasiswa as "NIM", m.nama_mahasiswa as "Nama" 
+from mahasiswa as m join jurusan as j 
+on m.kode_jurusan = j.kode_jurusan 
+where j.status_jurusan = 'Non Aktif';
 
 -- 4. query data mahasiswa dengan nilai diatas 80 (exclude) untuk ujian status aktif
 select m.nama_mahasiswa, n.nilai, u.nama_ujian 
 from mahasiswa as m 
-left join nilai as n on m.kode_mahasiswa = n.kode_mahasiswa 
-left join ujian as u on n.kode_ujian = u.kode_ujian 
+join nilai as n on m.kode_mahasiswa = n.kode_mahasiswa 
+join ujian as u on n.kode_ujian = u.kode_ujian 
 where n.nilai > 80 and u.status_ujian = 'Aktif';
 
 -- 5. query data jurusan mengandung kata "sistem"
@@ -122,5 +124,8 @@ join type_dosen as t on d.kode_typedosen = t.kode_typedosen where m.kode_mahasis
 select * from check_view;
 
 -- 9. query data mahasiswa beserta nilainya
-select m.nama_mahasiswa as "Nama Mahasiswa", n.nilai from mahasiswa as m 
-left join nilai as n on m.kode_mahasiswa = n.kode_mahasiswa;
+select m.nama_mahasiswa as "Nama Mahasiswa",coalesce (n.nilai, 0) as "Nilai", 
+coalesce (u.nama_ujian, '-') as "Ujian"  from mahasiswa as m 
+left join nilai as n on m.kode_mahasiswa = n.kode_mahasiswa
+left join ujian as u  on u.kode_ujian = n.kode_ujian 
+order by m.nama_mahasiswa asc ;
