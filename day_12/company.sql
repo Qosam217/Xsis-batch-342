@@ -283,12 +283,12 @@ group by b.first_name, b.last_name;
 -- (kalau tidak ada anak tulis 0 (nol) atau '-' saja)
 select concat(b.first_name, ' ', b.last_name) as "Nama Lengkap",
 coalesce (p."name",'-' )as "Jabatan", '2024' - extract(year from date(b.dob)) as "Usia",
-case when f.status = 'Anak' then count(f.status) else '0' end as "Jumlah Anak"
+count(case when f.status = 'Anak' then 1 else null end) as "Jumlah Anak"
 from biodata b join employee e on e.biodata_id = b.id 
 full join employee_position ep on ep.employee_id = e.id 
 full join "position" p on p.id = ep.position_id
-full join "family" f on b.id = f.biodata_id
-group by b.first_name, b.last_name, p."name", b.dob, f.status ;
+left join "family" f on b.id = f.biodata_id
+group by b.first_name, b.last_name, p."name", b.dob ;
 
 -- 19. Hitung ada berapa karyawan yang sudah menikah dan yang tidak menikah 
 -- (tabel: menikah x orang, tidak menikah x orang)
@@ -302,6 +302,9 @@ select distinct concat(b.first_name, ' ', b.last_name) as "Nama Lengkap" ,
 sum((lr.end_date - lr.start_date) + (tr.end_date - tr.start_date)) as "Jumlah Absen"
 from biodata b join employee e on b.id = e.biodata_id 
 join leave_request lr on lr.employee_id = e.id 
-join travel_request tr on tr.employee_id = e.id 
-group by b.first_name, b.last_name, tr.id 
+join travel_request tr on tr.employee_id = e.id
+where extract(year from date(lr.end_date)) = '2020'
+and extract(year from date(tr.end_date)) = '2020'
+group by b.first_name, b.last_name, tr.id
 having b.first_name = 'Raya';
+
