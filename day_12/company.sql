@@ -256,16 +256,52 @@ from (select distinct concat(b.first_name, ' ', b.last_name) as "nama",
 join employee_leave el2 on el2.employee_id = jc.employee_id;
 
 -- 16. Tampilkan selisih antara total item cost dengan total travel fee untuk masing-masing karyawan
-
+select concat(b.first_name, ' ', b.last_name) as "Nama Lengkap",
+sum(ts.item_cost) - sum(tt.travel_fee) as "Selisih total 	item cost dengan total travel fee"
+from biodata b join employee e on e.biodata_id = b.id 
+join travel_request tr on tr.employee_id  = e.id 
+join travel_settlement ts on ts.travel_request_id = tr.id 
+join travel_type tt  on tr.travel_type_id = tt.id
+group by b.first_name, b.last_name ;
 
 -- NOMOR 17. 
 -- Tambahkan data cuti tahun 2021 terhadap semua karyawan(termasuk karyawan baru yang sudah ditambahkan pada soal sebelumnya). 
 -- Lalu hitung jumlah cuti yang sudah diambil pada tahun 2020 dari masing-masing karyawan.
 -- Constraint : Data cuti karyawan baru tidak perlu ditampilkan
+insert into employee_leave (id, employee_id, "period", regular_quota) values
+(8, 7, 2021, 16),
+(9, 8, 2021, 12);
+
+select concat(b.first_name, ' ', b.last_name) as "Nama Lengkap",
+sum(lr.end_date - lr.start_date) as "Cuti diambil thn 2020"
+from biodata b join employee e  on b.id = e.biodata_id 
+join leave_request lr on lr.employee_id  = e.id
+group by b.first_name, b.last_name;
+
 -- NOMOR 18
 -- Tampilkan fullname, jabatan, usia, dan jumlah anak dari masing-masing karyawan saat ini 
 -- (kalau tidak ada anak tulis 0 (nol) atau '-' saja)
+select concat(b.first_name, ' ', b.last_name) as "Nama Lengkap",
+coalesce (p."name",'-' )as "Jabatan", '2024' - extract(year from date(b.dob)) as "Usia",
+case when f.status = 'Anak' then count(f.status) else '0' end as "Jumlah Anak"
+from biodata b join employee e on e.biodata_id = b.id 
+full join employee_position ep on ep.employee_id = e.id 
+full join "position" p on p.id = ep.position_id
+full join "family" f on b.id = f.biodata_id
+group by b.first_name, b.last_name, p."name", b.dob, f.status ;
+
 -- 19. Hitung ada berapa karyawan yang sudah menikah dan yang tidak menikah 
 -- (tabel: menikah x orang, tidak menikah x orang)
+select count(case when b.marital_status = true then 1 end) as "Sudah Menikah",
+count(case when b.marital_status = false then 1 end) as "Tidak Menikah"
+from biodata b join employee e on e.biodata_id  = b.id ; -- ada pelamar tidak diterima jadi karyawan dalam biodata
+
 -- 20. Jika digabungkan antara cuti dan perjalanan dinas, 
 -- berapa hari Raya tidak berada di kantor pada tahun 2020?
+select distinct concat(b.first_name, ' ', b.last_name) as "Nama Lengkap" , 
+sum((lr.end_date - lr.start_date) + (tr.end_date - tr.start_date)) as "Jumlah Absen"
+from biodata b join employee e on b.id = e.biodata_id 
+join leave_request lr on lr.employee_id = e.id 
+join travel_request tr on tr.employee_id = e.id 
+group by b.first_name, b.last_name, tr.id 
+having b.first_name = 'Raya';
