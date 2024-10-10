@@ -1,0 +1,67 @@
+.header-box{
+    display: flex;
+    background-image: url('D:/Xsis-batch-342/tech/banner.jpeg');
+    background-repeat: repeat-x;
+    background-size: 50px50px; 
+    background-position: center; 
+    width: 100%; 
+    height: 100%; 
+    border : 15px black;
+    align-items: center;
+    justify-content: center;
+}
+
+.bordered {
+    border: 2px solid black; 
+    padding: 10px; 
+}
+
+.resize-image{
+    width: auto;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container{
+    border: 5px solid black;
+    background-color: burlywood;
+    padding: 5px;
+    margin: 5px;
+}
+.box1{
+    display: inline-block;
+    width: 35%;
+    margin: 10px; 
+}
+.box2 {
+    display: inline-block;
+    width: 55%;
+    margin: 10px; 
+    vertical-align: top; 
+
+}
+.centered-box{
+    display: flex;
+    vertical-align: top; 
+    justify-content: center;
+    width: auto;
+    height: 800px;
+}
+.color-text{
+    color: azure;
+    text-shadow: 2px 2px 0px black,
+    -2px 2px 0px black,
+    2px -2px 0px black,
+    -2px -2px 0px ;
+}
+.box3{
+    background-color:darksalmon;
+    border: 1px solid black;
+    height: auto;
+}
+.centered-text{
+    display: flex;
+    align-content: center;
+}
