@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="script.js"></script>
+    <h1>Form Pemesanan</h1>
+    <form id="myOrder">
+      <label for="name">Nama Pemesan: </label>
+      <input type="text" id="name"><br><br>
+
+      <label for="tanggal-lahir">Tanggal Lahir</label><br>
+      <input type="date" id="tanggal-lahir"><br><br>
+
+      <label for="radio">Anda adalah :</label><br>
+      <label><input type="radio" name="who" value="pria"    class="option-checkbox"> Pria</label><br>
+      <label><input type="radio" name="who" value="wanita"  class="option-checkbox"> Wanita</label><br>
+      <label><input type="radio" name="who" value="kresek"  class="option-checkbox"> Kresek Indomaret</label><br>
+      <label><input type="radio" name="who" value="gila"    class="option-checkbox"> Gila</label><br><br>
+      
+      <label for="order-type">Daftar Barang Pesanan:</label>
+      <button type="button" onclick="addCheckbox()">+</button>
+      <br>
+      </form><br>
+      <form>
+        <!-- <label for="pickTime">Waktu Pengambilan</label><br>
+        <input type="datetime-local" name="pickTime"><br> -->
+      <button type="button" onclick="getOrders()">Pesan</button>
+      </form>      
+</body>
+</html>
+
+  
